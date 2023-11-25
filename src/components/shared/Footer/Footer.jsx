@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
+                viewBox="0 0 32 32"y
                 fill="currentColor"
                 className="flex-shrink-0 w-5 h-5 rounded-full text-gray-900"
               >
@@ -22,7 +22,7 @@ const Footer = () => {
               </svg>
             </div>
             <span className="self-center text-2xl font-semibold">
-              ExploreBangla
+              GoTrip
             </span>
           </Link>
         </div>
@@ -119,7 +119,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="py-6 text-sm text-center">
-        © 2023 ExploreBangla by Tanim.
+        © 2023 GoTrip by Tanim.
       </div>
     </footer>
   );

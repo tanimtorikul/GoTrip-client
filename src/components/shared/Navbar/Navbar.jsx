@@ -21,8 +21,25 @@ const Navbar = () => {
               />
             </svg>
           </label>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li className="text-lg">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li className="text-lg">
+            <NavLink to="/community">Community</NavLink>
+          </li>
+          <li className="text-lg">
+            <NavLink to="/blogs">Blogs</NavLink>
+          </li>
+          <li className="text-lg">
+            <NavLink to="/about">About Us</NavLink>
+          </li>
+          <li className="text-lg">
+            <NavLink to="/contact">Contact Us</NavLink>
+          </li>
+      </ul>
         </div>
-        <a className="btn btn-ghost text-2xl">ExploreBangla</a>
+        <a className="btn btn-ghost text-2xl">GoTrip</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -71,7 +88,7 @@ const Navbar = () => {
               <a>Logout</a>
             </li>
           </ul> */}
-           <Link className="btn text-lg">Login</Link>
+           <Link to='/login' className="btn text-lg">Login</Link>
         </div>
       </div>
     </div>
