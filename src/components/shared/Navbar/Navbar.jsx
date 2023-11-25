@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gray-100 bg-opacity-30">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -92,6 +92,9 @@ const Navbar = () => {
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
+                  <a className="justify-between">{user.displayName}</a>
+                </li>
+                <li>
                   <a className="justify-between">{user.email}</a>
                 </li>
                 <li>
@@ -105,7 +108,7 @@ const Navbar = () => {
               </ul>
             </>
           ) : (
-            <Link to="/login" className="btn text-lg">
+            <Link to="/login" className="btn text-lg bg-[#3554D1] text-white">
               Login
             </Link>
           )}
