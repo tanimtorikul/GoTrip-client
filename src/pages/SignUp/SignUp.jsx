@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
-import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth.jsx";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const { createUser } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,6 +17,8 @@ const Signup = () => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const user = result.user;
+      toast.success("User created succesfully");
+      navigate("/");
       console.log(user);
     });
   };
@@ -121,15 +124,7 @@ const Signup = () => {
             </button>
           </div>
         </form>
-        <div className="flex items-center pt-4 space-x-2">
-          <div className="flex-1 h-px sm:w-20 bg-gray-700"></div>
-          <p className="px-4 md:text-lg text-gray-400">Or Continue With</p>
-          <div className="flex-1 h-px sm:w-20 bg-gray-700"></div>
-        </div>
-        <div className="flex justify-center items-center space-x-4 border m-4 p-3 border-gray-300 rounded cursor-pointer">
-          <FcGoogle size={36} />
-          <p className="text-lg">Google</p>
-        </div>
+
         <p className="px-8 md:text-lg text-center text-gray-400">
           Already have an account?{" "}
           <Link
