@@ -41,7 +41,7 @@ const Banner = () => {
   });
 
   return (
-    <div ref={sliderRef} className="min-h-[600px] relative overflow-hidden">
+    <div ref={sliderRef} className="min-h-[800px] relative overflow-hidden">
       {banners.map((src, idx) => (
         <div
           key={idx}
