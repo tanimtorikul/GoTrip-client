@@ -5,7 +5,7 @@ import Navbar from "../components/shared/Navbar/Navbar";
 
 const MainLayout = () => {
     return (
-        <div className="font-outfit">
+        <div className="font-jost">
             <div className="max-w-7xl mx-auto">
                 <Navbar></Navbar>
             </div>

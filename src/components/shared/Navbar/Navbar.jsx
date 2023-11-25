@@ -1,6 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -21,23 +30,26 @@ const Navbar = () => {
               />
             </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li className="text-lg">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li className="text-lg">
-            <NavLink to="/community">Community</NavLink>
-          </li>
-          <li className="text-lg">
-            <NavLink to="/blogs">Blogs</NavLink>
-          </li>
-          <li className="text-lg">
-            <NavLink to="/about">About Us</NavLink>
-          </li>
-          <li className="text-lg">
-            <NavLink to="/contact">Contact Us</NavLink>
-          </li>
-      </ul>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li className="text-lg">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="text-lg">
+              <NavLink to="/community">Community</NavLink>
+            </li>
+            <li className="text-lg">
+              <NavLink to="/blogs">Blogs</NavLink>
+            </li>
+            <li className="text-lg">
+              <NavLink to="/about">About Us</NavLink>
+            </li>
+            <li className="text-lg">
+              <NavLink to="/contact">Contact Us</NavLink>
+            </li>
+          </ul>
         </div>
         <a className="btn btn-ghost text-2xl">GoTrip</a>
       </div>
@@ -63,32 +75,35 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* Add the dropdown code here */}
         <div className="dropdown dropdown-end">
-          {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-              
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul> */}
-           <Link to='/login' className="btn text-lg">Login</Link>
+          {user ? (
+            <>
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img alt={user.email} src={user.photoURL} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">{user.email}</a>
+                </li>
+                <li>
+                  <a>Dashboard</a>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>
+                    <a>Logout</a>
+                  </button>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <Link to="/login" className="btn text-lg">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
