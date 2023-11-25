@@ -1,10 +1,14 @@
+import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <div className="bg-[#E5F0FD] flex justify-center items-center py-4 md:py-0 min-h-screen">
-      <div className="flex flex-col md:max-w-2xl rounded-md p-10 bg-white shadow-xl text-gray-900">
+      <Helmet>
+                <title>Login | GoTrip -Travel Agency</title>
+            </Helmet>
+      <div className="flex flex-col md:max-w-2xl rounded-md py-2 px-10 bg-white shadow-xl text-gray-900">
         <div className="mb-2 text-center">
           <h1 className="my-2 text-2xl md:text-5xl font-bold">Log In</h1>
           <p className="md:text-lg text-gray-400">
