@@ -1,24 +1,8 @@
 import { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import useAuth from "../../../hooks/useAuth";
 
-const bannersContent = [
-  {
-    title: "Saint Martin",
-    description:
-      "Discover the pristine beauty of Saint Martin, a serene island paradise in the Bay of Bengal. Immerse yourself in crystal-clear waters, white sandy beaches, and a tranquil atmosphere.",
-  },
-  {
-    title: "Cox's Bazar",
-    description:
-      "Experience the breathtaking coastline of Cox's Bazar, home to the longest natural sea beach in the world. Enjoy the golden sands, vibrant culture, and lively atmosphere of this popular tourist destination.",
-  },
-  {
-    title: "Sylhet",
-    description:
-      "Explore the enchanting landscapes of Sylhet, known for its picturesque tea gardens, rolling hills, and vibrant culture. Immerse yourself in the natural beauty and rich heritage of this captivating region.",
-  },
-];
 
 const banners = [
   "/saintmartinImage.jpg",
@@ -28,6 +12,7 @@ const banners = [
 
 const Banner = () => {
   const [opacities, setOpacities] = useState([]);
+  const { user } = useAuth();
 
   const [sliderRef] = useKeenSlider({
     slides: banners.length,
@@ -56,12 +41,20 @@ const Banner = () => {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-              <h1 className="text-4xl font-bold">
-                {bannersContent[idx].title}
-              </h1>
-              <p className="text-lg">{bannersContent[idx].description}</p>
-              <button className="bg-blue-700 text-white py-2 px-4 rounded">
-                Explore Now
+              {user ? (
+                <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                   Hi {user?.displayName.split(" ")[0]}!
+                </h1>
+              ) : (
+                <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                  Go with GoTrip!
+                </h1>
+              )}
+              <p className="text-2xl mb-6">
+              Where Would You Like To Go?
+              </p>
+              <button className="bg-black text-white py-2 px-4 rounded">
+                Book Now
               </button>
             </div>
           </div>
