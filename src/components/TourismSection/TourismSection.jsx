@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import usePackages from "../../hooks/usePackages";
 import { FaRegHeart } from "react-icons/fa";
+import TourGuidesList from "../TourGuidesList/TourGuidesList";
 
 const TourismSection = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -43,7 +44,7 @@ const TourismSection = () => {
                 {packages.slice(0, 4).map((tourPackage) => (
                   <div
                     key={tourPackage.id}
-                    className="card group w-full bg-white shadow-lg rounded-md overflow-hidden"
+                    className="card group w-full px-4 md:px-0 bg-white shadow-lg rounded-md overflow-hidden"
                   >
                     <figure className="relative">
                       <img
@@ -78,7 +79,9 @@ const TourismSection = () => {
               All Packages
             </button>
           </TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel>
+            <TourGuidesList></TourGuidesList>
+          </TabPanel>
         </Tabs>
       </div>
     </div>

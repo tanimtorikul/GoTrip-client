@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "610acaa7a832bb3494b426a1",
+    "name": "Amina Rahman",
+    "photo": "https://i.ibb.co/FgTXB3X/tourguide4.jpg",
+    "contact": "+880 1234 56789",
+    "education": "Bachelor's in Tourism Management",
+    "skill": "Multilingual Communication",
+    "workExperience": "10 years of guiding experience in Bangladesh",
+    "description": "Amina Rahman is a seasoned tour guide with a passion for showcasing the rich cultural heritage and natural beauty of Bangladesh. Fluent in English, Bengali, and French, Amina ensures a memorable and informative experience for all travelers."
+  },
+  {
+    "_id": "610acaa7a832bb3494b426a2",
+    "name": "Rahim Khan",
+    "photo": "https://i.ibb.co/NLYLM2T/tourguide3.jpg",
+    "contact": "+880 9876 54321",
+    "education": "Master's in History",
+    "skill": "Historical Expertise",
+    "workExperience": "8 years of guiding at historical sites",
+    "description": "Rahim Khan is a passionate historian and tour guide, specializing in showcasing Bangladesh's rich historical landmarks. With a master's degree in history, Rahim provides in-depth insights into the country's fascinating past."
+  },
+  {
+    "_id": "610acaa7a832bb3494b426a3",
+    "name": "Farida Islam",
+    "photo": "https://i.ibb.co/gP31Gkf/tourguide2.jpg",
+    "contact": "+880 7654 32109",
+    "education": "Diploma in Eco-Tourism",
+    "skill": "Eco-Tourism Advocacy",
+    "workExperience": "6 years of guiding in eco-friendly tours",
+    "description": "Farida Islam is a dedicated eco-tourism advocate, passionate about promoting sustainable and responsible travel. With a diploma in eco-tourism, Farida leads tours that focus on preserving the environment and engaging with local communities."
+  },
+  {
+    "_id": "610acaa7a832bb3494b426a4",
+    "name": "Kamal Ahmed",
+    "photo": "https://i.ibb.co/bsgp9xT/tourguide1.jpg",
+    "contact": "+880 2345 67890",
+    "education": "Bachelor's in Wildlife Conservation",
+    "skill": "Wildlife Exploration",
+    "workExperience": "7 years of guiding in wildlife expeditions",
+    "description": "Kamal Ahmed is a wildlife enthusiast and tour guide, specializing in wildlife conservation and exploration. With a degree in wildlife conservation, Kamal provides exciting and educational experiences for nature lovers."
+  }
+]
