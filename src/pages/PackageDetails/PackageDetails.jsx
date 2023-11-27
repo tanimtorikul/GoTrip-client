@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const PackageDetails = () => {
   const { id } = useParams();
-  const [packageDetails, setPackageDetails] = useState({});
+  const [packageDetails, setPackageDetails] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

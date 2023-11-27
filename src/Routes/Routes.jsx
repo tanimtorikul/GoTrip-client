@@ -8,6 +8,7 @@ import PackageDetails from "../pages/PackageDetails/PackageDetails";
 import TourTypePage from "../pages/TourTypePage/TourTypePage";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Profile from "../pages/UserDashboard/Profile/Profile";
+import StoryDetails from "../pages/StoryDetails/StoryDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -37,17 +38,20 @@ export const router = createBrowserRouter([
         path: "/packages/:tourType",
         element: <TourTypePage></TourTypePage>,
       },
+      {
+        path: "/stories/:id",
+        element: <StoryDetails></StoryDetails>,
+      },
     ],
-    
   },
   {
-    path:'dashboard',
-    element:<Dashboard></Dashboard>,
-    children:[
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       {
-        path:'profile',
-        element:<Profile></Profile>
-      }
-    ]
-  }
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+    ],
+  },
 ]);
