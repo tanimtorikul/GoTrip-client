@@ -8,7 +8,7 @@ import TourGuidesList from "../TourGuidesList/TourGuidesList";
 import { Link } from "react-router-dom";
 
 const TourismSection = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(1);
   const [packages] = usePackages();
   console.log(packages);
 

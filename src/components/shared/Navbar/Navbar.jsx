@@ -98,7 +98,7 @@ const Navbar = () => {
                   <a className="justify-between">{user.email}</a>
                 </li>
                 <li>
-                  <a>Dashboard</a>
+                  <Link to='/dashboard/profile'>Dashboard</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>

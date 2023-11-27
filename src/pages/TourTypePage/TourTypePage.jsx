@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { axiosSecure } from "../../hooks/useAxiosSecure";
+import { axiosPublic } from "../../hooks/useaxiosPublic";
 import { FaRegHeart } from "react-icons/fa";
 
 const TourTypePage = () => {
@@ -9,7 +9,7 @@ const TourTypePage = () => {
 
   useEffect(() => {
     const fetchTours = () => {
-      axiosSecure(`/packages/tourType/${tourType}`).then((response) => {
+      axiosPublic(`/packages/tourType/${tourType}`).then((response) => {
         setTours(response.data);
       });
     };
