@@ -63,7 +63,7 @@ const TourismSection = () => {
                       <p className="text-gray-600 mb-2">
                         {tourPackage.tourType}
                       </p>
-                      <p className="text-lg font-bold mb-2">
+                      <p className="text-lg text-[#EA6E5B] font-bold mb-2">
                         ${tourPackage.price}
                       </p>
                       <div className="card-actions justify-center">

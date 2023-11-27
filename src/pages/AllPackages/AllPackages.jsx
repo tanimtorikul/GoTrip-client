@@ -24,11 +24,11 @@ const AllPackages = () => {
                 </div>
               </figure>
               <div className="card-body p-4">
-                <h2 className="text-xl font-semibold mb-2">
+                <h2 className="text-xl text-[#313041] font-semibold mb-2">
                   {tourPackage.tripTitle}
                 </h2>
-                <p className="text-gray-600 mb-2">{tourPackage.tourType}</p>
-                <p className="text-lg font-bold mb-2">${tourPackage.price}</p>
+                <p className="text-gray-600 text-center mb-2">{tourPackage.tourType}</p>
+                <p className="text-lg text-[#EA6E5B] text-center font-bold mb-2">${tourPackage.price}</p>
                 <div className="card-actions justify-center">
                   <Link
                     to={`/package/${tourPackage._id}`}
