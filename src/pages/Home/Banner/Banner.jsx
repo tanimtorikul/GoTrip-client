@@ -26,11 +26,11 @@ const Banner = () => {
   });
 
   return (
-    <div ref={sliderRef} className="min-h-[800px] relative overflow-hidden">
+    <div ref={sliderRef} className="min-h-[500px] md:min-h-[800px] relative overflow-hidden">
       {banners.map((src, idx) => (
         <div
           key={idx}
-          className="w-full h-full absolute top-0 px-4 md:p-0"
+          className="w-full h-full absolute top-0"
           style={{ opacity: opacities[idx] }}
         >
           <div className="w-full h-full relative">

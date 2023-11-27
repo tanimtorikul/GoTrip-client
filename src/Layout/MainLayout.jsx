@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
     return (
-        <div className="font-jost">
+        <div className="font-jost px-4 md:px-0">
             <div className="max-w-7xl mx-auto">
                 <Navbar></Navbar>
             </div>

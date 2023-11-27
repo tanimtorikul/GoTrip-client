@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import usePackages from "../../hooks/usePackages";
 import { FaRegHeart } from "react-icons/fa";
 import TourGuidesList from "../TourGuidesList/TourGuidesList";
+import { Link } from "react-router-dom";
 
 const TourismSection = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -28,7 +29,7 @@ const TourismSection = () => {
             <Tab className="text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
               Overview
             </Tab>
-            <Tab className="text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
+            <Tab className="text-xl font-semibold  border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
               Our Packages
             </Tab>
             <Tab className="text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
@@ -44,11 +45,11 @@ const TourismSection = () => {
                 {packages.slice(0, 4).map((tourPackage) => (
                   <div
                     key={tourPackage.id}
-                    className="card group w-full px-4 md:px-0 bg-white shadow-lg rounded-md overflow-hidden"
+                    className="card group w-full  bg-white shadow-lg rounded-md overflow-hidden"
                   >
                     <figure className="relative">
                       <img
-                        src={tourPackage.image}
+                        src={tourPackage.images[0]}
                         className="w-full h-72 object-cover group-hover:scale-110 transition-transform"
                       />
                       <div className="absolute top-6 right-5">
@@ -66,18 +67,24 @@ const TourismSection = () => {
                         ${tourPackage.price}
                       </p>
                       <div className="card-actions justify-center">
-                        <button className="btn bg-[#FAF5EE]">
+                        <Link
+                          to={`/package/${tourPackage._id}`}
+                          className="btn bg-[#FAF5EE]"
+                        >
                           View Package
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            <button className="mt-4 bg-black text-white py-2 px-4 rounded-md">
+            <Link
+              to="/allpackages"
+              className="mt-4 bg-black text-white py-2 px-4 rounded-md"
+            >
               All Packages
-            </button>
+            </Link>
           </TabPanel>
           <TabPanel>
             <TourGuidesList></TourGuidesList>
