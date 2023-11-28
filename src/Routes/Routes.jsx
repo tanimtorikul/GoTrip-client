@@ -9,6 +9,7 @@ import TourTypePage from "../pages/TourTypePage/TourTypePage";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Profile from "../pages/UserDashboard/Profile/Profile";
 import StoryDetails from "../pages/StoryDetails/StoryDetails";
+import AllStories from "../pages/AllStories/AllStories";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/stories/:id",
         element: <StoryDetails></StoryDetails>,
+      },
+      {
+        path: "/allstories",
+        element: <AllStories></AllStories>,
       },
     ],
   },
