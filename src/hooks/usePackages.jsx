@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const usePackages = () => {
-  const [packages, setPackages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
+  const {
+    data: packages = [],
+    isPending: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ["packages"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/packages");
+      return res.data;
+    },
+  });
 
-  useEffect(() => {
-    fetch("http://localhost:5000/packages")
-      .then((res) => res.json())
-      .then((data) => {
-        setPackages(data);
-        setLoading(false);
-      });
-  }, []);
-
-  return [packages, loading];
+  return [packages, loading, refetch];
 };
 export default usePackages;

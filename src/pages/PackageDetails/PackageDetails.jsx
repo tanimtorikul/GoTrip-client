@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useaxiosPublic from "../../hooks/useAxiosPublic";
 
 const PackageDetails = () => {
   const { id } = useParams();
   const [packageDetails, setPackageDetails] = useState([]);
+  const axiosPublic = useaxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:5000/packages/${id}`);
-      const data = await response.json();
-      setPackageDetails(data);
+      const response = await axiosPublic.get(`/packages/${id}`);
+      setPackageDetails(response.data);
     };
 
     fetchData();
-  }, [id]);
+  }, [axiosPublic, id]);
+  console.log(packageDetails);
 
   return (
     <div>
-      <h2 className="text-3xl text-center font-bold mb-4">{packageDetails.tripTitle}</h2>
-
-      {/* Image Gallery Section */}
+      <h2 className="text-3xl text-center font-bold mb-4">
+        {packageDetails.tripTitle}
+      </h2>
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {packageDetails.images &&
           packageDetails.images.map((image, index) => (
@@ -34,10 +36,6 @@ const PackageDetails = () => {
       <div className="mt-8 text-center">
         <h3 className="text-2xl font-bold mb-2">About The Tour</h3>
         <p className="text-gray-600">{packageDetails.description}</p>
-
-
-
-       
       </div>
     </div>
   );

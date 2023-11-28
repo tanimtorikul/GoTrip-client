@@ -16,7 +16,7 @@ const TourismSection = () => {
     <div className="text-center">
       <SectionTitle
         heading="Explore Bangladesh with Us"
-        subHeading="Discover Unforgettable Experiences through our Overview, Choose Your Adventure with Our Packages, and Meet the Experts - Our Tour Guides!"
+        subHeading="Uncover Adventures, Choose Packages, and Meet Our Expert Guides!"
       />
 
       <div className="mx-auto max-w-[1400px]">
@@ -26,13 +26,13 @@ const TourismSection = () => {
           className="my-8"
         >
           <TabList className="flex justify-center space-x-4">
-            <Tab className="text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
+            <Tab className="md:text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
               Overview
             </Tab>
-            <Tab className="text-xl font-semibold  border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
+            <Tab className="md:text-xl font-semibold  border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
               Our Packages
             </Tab>
-            <Tab className="text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
+            <Tab className="md:text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
               Meet Our Tour Guides
             </Tab>
           </TabList>
@@ -41,7 +41,7 @@ const TourismSection = () => {
 
           <TabPanel>
             {packages.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8 px-4 md:px-4 lg:px-0">
                 {packages.slice(0, 4).map((tourPackage) => (
                   <div
                     key={tourPackage.id}

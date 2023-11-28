@@ -11,12 +11,12 @@ const TourTypeSection = () => {
         heading="Discover Your Adventure"
         subHeading="Explore Our Diverse Range of Tour Types and Create Unforgettable Memories"
       ></SectionTitle>
-      <div className="flex justify-center gap-12">
+      <div className="flex flex-wrap justify-center gap-12">
         {packages.map((tourType) => (
           <div key={tourType._id}>
             <Link
               to={`/packages/${tourType.tourType}`}
-              className="text-2xl font-bold"
+              className="text-xl md:text-2xl font-bold overflow-hidden"
             >
               {tourType.tourType}
             </Link>
