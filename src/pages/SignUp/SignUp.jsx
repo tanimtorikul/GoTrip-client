@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth.jsx";
 import toast from "react-hot-toast";
 import SocialLogin from "../../components/SocialLogin/SocialLogin.jsx";
+import useaxiosPublic from "../../hooks/useAxiosPublic.jsx";
 
 const Signup = () => {
   const { createUser } = useAuth();
+  const axiosPublic = useaxiosPublic();
   const navigate = useNavigate();
   const {
     register,
@@ -15,12 +17,18 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+   
     createUser(data.email, data.password).then((result) => {
-      const user = result.user;
-      toast.success("User created succesfully");
-      navigate("/");
-      console.log(user);
+      console.log(data);
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.name
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        toast.success("Logged in successfully!");
+        navigate(location?.state ? location.state : "/");
+      });
     });
   };
 
