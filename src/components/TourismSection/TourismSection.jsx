@@ -12,7 +12,11 @@ const TourismSection = () => {
   const [packages] = usePackages();
   console.log(packages);
 
-  const videoUrl = ["https://www.youtube.com/embed/czXoYw8Zk54", "https://www.youtube.com/embed/czXoYw8Zk54", "https://www.youtube.com/embed/czXoYw8Zk54"];
+  const videoUrl = [
+    "https://www.youtube.com/embed/czXoYw8Zk54",
+    "https://www.youtube.com/embed/czXoYw8Zk54",
+    "https://www.youtube.com/embed/czXoYw8Zk54",
+  ];
 
   return (
     <div className="text-center">

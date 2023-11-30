@@ -13,6 +13,7 @@ import AllStories from "../pages/AllStories/AllStories";
 import PrivateRoute from "../Routes/PrivateRoute";
 import ManageUsers from "../Layout/Dashboard/ManageUsers/ManageUsers";
 import AddPackages from "../Layout/Dashboard/AddPackages/AddPackages";
+import WishList from "../Layout/Dashboard/WishList/WishList";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: "manageusers",
         element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "wishlist",
+        element: <WishList></WishList>,
       },
     ],
   },

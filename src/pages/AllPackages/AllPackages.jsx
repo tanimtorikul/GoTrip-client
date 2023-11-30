@@ -1,9 +1,61 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import usePackages from "../../hooks/usePackages";
 import { FaRegHeart } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useaxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const AllPackages = () => {
   const [packages] = usePackages();
+  const [wishlist, setWishlist] = useState([]);
+  const axiosPublic = useaxiosPublic();
+  const { user } = useAuth();
+
+  const handleWishlistToggle = async (tourPackageItem) => {
+    const isPackageInWishlist = wishlist.some(
+      (item) => item._id === tourPackageItem._id
+    );
+
+    const result = await Swal.fire({
+      title: "Add to Wishlist?",
+      text: "Do you want to add this trip to your wishlist?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, add it!",
+      cancelButtonText: "No, cancel",
+    });
+
+    if (result.isConfirmed) {
+      const tourPackage = {
+        image: tourPackageItem.images[0],
+        _id: tourPackageItem._id,
+        tripTitle: tourPackageItem.tripTitle,
+        tourType: tourPackageItem.tourType,
+        price: tourPackageItem.price,
+        userEmail: user?.email,
+      };
+
+      setWishlist((prevWishlist) =>
+        isPackageInWishlist
+          ? prevWishlist.filter((item) => item._id !== tourPackage._id)
+          : [...prevWishlist, tourPackage]
+      );
+
+      try {
+        const response = await axiosPublic.post("/wishlists", tourPackage);
+
+        console.log("Wishlist added:", response.data);
+        toast.success(`${tourPackage.tripTitle} is saved in wishlist!`);
+      } catch (error) {
+        console.error("Error adding wishlist:", error);
+        toast.error("Failed to add to wishlist");
+      }
+    }
+  };
 
   return (
     <div className="max-w-[1400px] mx-auto">
@@ -20,11 +72,19 @@ const AllPackages = () => {
                   className="w-full h-72 object-cover group-hover:scale-110 transition-transform"
                 />
                 <div className="absolute top-6 right-5">
-                  <FaRegHeart className="text-black text-4xl transition-transform transform hover:scale-110 bg-gray-200 rounded-full p-2" />
+                  <FaRegHeart
+                    className={`text-4xl transition-transform transform hover:scale-110 bg-gray-200 rounded-full p-2 ${
+                      wishlist.find((item) => item._id === tourPackage._id) !==
+                      undefined
+                        ? "text-red-500"
+                        : "text-black"
+                    }`}
+                    onClick={() => handleWishlistToggle(tourPackage)}
+                  />
                 </div>
               </figure>
               <div className="card-body p-4">
-                <h2 className="text-xl text-[#313041] font-semibold mb-2">
+                <h2 className="text-xl text-[#313041] text-center font-semibold mb-2">
                   {tourPackage.tripTitle}
                 </h2>
                 <p className="text-gray-600 text-center mb-2">

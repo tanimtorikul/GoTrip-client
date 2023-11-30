@@ -2,13 +2,20 @@ import { Toaster } from "react-hot-toast";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const isAdmin = false;
+
   return (
-    <div className="flex flex-col md:flex-row h-screen text-white">
-      <div className="w-64 md:w-1/4 min-h-screen bg-[#E23428] p-4">
-        <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
-          User Dashboard
-        </div>
+    <div className="flex flex-col md:flex-row md:h-screen text-white">
+      <div className="w-full md:w-72 md:min-h-screen bg-blue-800 p-4">
+        {isAdmin ? (
+          <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
+            Admin Dashboard
+          </div>
+        ) : (
+          <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
+            User Dashboard
+          </div>
+        )}
         <ul className="menu space-y-2">
           {isAdmin ? (
             <>
@@ -88,10 +95,10 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1 p-4 md:p-8 bg-white">
+      <div className="md:flex-1 p-4 md:p-8 bg-gray-100">
         <Outlet />
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
