@@ -27,8 +27,12 @@ const AllPackages = () => {
                 <h2 className="text-xl text-[#313041] font-semibold mb-2">
                   {tourPackage.tripTitle}
                 </h2>
-                <p className="text-gray-600 text-center mb-2">{tourPackage.tourType}</p>
-                <p className="text-lg text-[#EA6E5B] text-center font-bold mb-2">${tourPackage.price}</p>
+                <p className="text-gray-600 text-center mb-2">
+                  {tourPackage.tourType}
+                </p>
+                <p className="text-lg text-[#EA6E5B] text-center font-bold mb-2">
+                  ${tourPackage.price}
+                </p>
                 <div className="card-actions justify-center">
                   <Link
                     to={`/package/${tourPackage._id}`}

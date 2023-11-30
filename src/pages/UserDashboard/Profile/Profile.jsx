@@ -5,7 +5,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?expiration=600&key=${image_hosting_key}`;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Profile = () => {
   const { user } = useAuth();
@@ -125,6 +125,7 @@ const Profile = () => {
             {...register("image", { required: true })}
             name="image"
             className="w-full px-4 py-2 border rounded-md border-gray-300 bg-gray-100 text-gray-800"
+            multiple
           />
           {errors.image && (
             <span className="text-red-500">Image is required</span>

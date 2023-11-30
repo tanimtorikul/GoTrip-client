@@ -1,11 +1,12 @@
-import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import useaxiosPublic from "../../hooks/useAxiosPublic";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
+  const axiosPublic = useaxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,8 +14,15 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
-        toast.success("Logged in successfully!");
-        navigate(location?.state ? location.state : "/");
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+          toast.success("Logged in successfully!");
+          navigate(location?.state ? location.state : "/");
+        });
       })
       .catch((error) => {
         toast.error(error.message);

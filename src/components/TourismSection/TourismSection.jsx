@@ -12,6 +12,8 @@ const TourismSection = () => {
   const [packages] = usePackages();
   console.log(packages);
 
+  const videoUrl = ["https://www.youtube.com/embed/czXoYw8Zk54", "https://www.youtube.com/embed/czXoYw8Zk54", "https://www.youtube.com/embed/czXoYw8Zk54"];
+
   return (
     <div className="text-center">
       <SectionTitle
@@ -37,14 +39,31 @@ const TourismSection = () => {
             </Tab>
           </TabList>
 
-          <TabPanel></TabPanel>
-
+          <TabPanel>
+            {/* Map over the YouTube video URLs and generate iframes */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+              {videoUrl.map((videoURL, index) => (
+                <div
+                  key={index}
+                  className="youtube-video-container bg-gray-300 rounded-md overflow-hidden"
+                >
+                  <iframe
+                    className="w-full h-64 object-cover"
+                    src={videoURL}
+                    title={`YouTube Video ${index + 1}`}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                  />
+                </div>
+              ))}
+            </div>
+          </TabPanel>
           <TabPanel>
             {packages.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8 px-4 md:px-4 lg:px-0">
                 {packages.slice(0, 4).map((tourPackage) => (
                   <div
-                    key={tourPackage.id}
+                    key={tourPackage._id}
                     className="card group w-full  bg-white shadow-lg rounded-md overflow-hidden"
                   >
                     <figure className="relative">

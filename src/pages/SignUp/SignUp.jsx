@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth.jsx";
 import toast from "react-hot-toast";
+import SocialLogin from "../../components/SocialLogin/SocialLogin.jsx";
 
 const Signup = () => {
   const { createUser } = useAuth();
@@ -124,6 +125,12 @@ const Signup = () => {
             </button>
           </div>
         </form>
+        <div className="flex items-center pt-4 space-x-2">
+          <div className="flex-1 h-px sm:w-20 bg-gray-700"></div>
+          <p className="px-4 md:text-lg text-gray-400">Or Continue With</p>
+          <div className="flex-1 h-px sm:w-20 bg-gray-700"></div>
+        </div>
+        <SocialLogin />
 
         <p className="px-8 md:text-lg text-center text-gray-400">
           Already have an account?{" "}

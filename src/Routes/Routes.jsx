@@ -10,6 +10,9 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Profile from "../pages/UserDashboard/Profile/Profile";
 import StoryDetails from "../pages/StoryDetails/StoryDetails";
 import AllStories from "../pages/AllStories/AllStories";
+import PrivateRoute from "../Routes/PrivateRoute";
+import ManageUsers from "../Layout/Dashboard/ManageUsers/ManageUsers";
+import AddPackages from "../Layout/Dashboard/AddPackages/AddPackages";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -51,11 +54,24 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      // admin routes
+      {
+        path: "addpackage",
+        element: <AddPackages></AddPackages>,
+      },
+      {
+        path: "manageusers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
