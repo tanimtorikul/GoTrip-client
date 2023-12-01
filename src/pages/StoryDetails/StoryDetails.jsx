@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FacebookShareCount, FacebookShareButton } from "react-share";
 import { FaFacebook } from "react-icons/fa6";
 
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+
 const StoryDetails = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const { id } = useParams();
   const [story, setStory] = useState(null);
   const axiosPublic = useAxiosPublic();
@@ -18,6 +23,14 @@ const StoryDetails = () => {
 
     fetchData();
   }, [axiosPublic, id]);
+
+  const handleFacebookShare = () => {
+    toast.error("You need to log in first to share the story!");
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
+  };
 
   const baseUrl = window.location.origin;
   const path = location.pathname.startsWith("/")
@@ -32,7 +45,7 @@ const StoryDetails = () => {
           <img
             src={story.image}
             alt={story.storyTitle}
-            className="w-full h-64 object-cover rounded-lg mb-4"
+            className="w-full h-96 object-cover rounded-lg mb-4"
           />
           <h2 className="text-3xl font-bold mb-4 text-teal-500">
             {story.storyTitle}
@@ -47,14 +60,23 @@ const StoryDetails = () => {
             </p>
           </div>
           <div className="border-t border-gray-300 pt-4">
-            <div className="flex items-center justify-end">
-              <FacebookShareCount url={shareUrl}>
-                {(count) => <span className="mr-2">{count}</span>}
-              </FacebookShareCount>
-              <FacebookShareButton url={shareUrl}>
-                <FaFacebook size={40} />
-              </FacebookShareButton>
-            </div>
+            {user ? (
+              <div className="flex items-center justify-end">
+                <FacebookShareCount url={shareUrl}>
+                  {(count) => <span className="mr-2">{count}</span>}
+                </FacebookShareCount>
+                <FacebookShareButton url={shareUrl}>
+                  <FaFacebook size={40} />
+                </FacebookShareButton>
+              </div>
+            ) : (
+              <div className="flex items-center justify-end">
+                <FaFacebook
+                  size={40}
+                  onClick={handleFacebookShare}
+                ></FaFacebook>
+              </div>
+            )}
           </div>
         </>
       )}
