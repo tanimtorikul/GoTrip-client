@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useaxiosPublic from "../../hooks/useAxiosPublic";
+import BookingForm from "../../components/BookingForm/BookingForm";
 
 const PackageDetails = () => {
   const { id } = useParams();
@@ -15,6 +16,12 @@ const PackageDetails = () => {
 
     fetchData();
   }, [axiosPublic, id]);
+
+  const tourGuides = [
+    { id: 1, name: "John Doe" },
+    { id: 2, name: "Jane Smith" },
+    // Add more tour guides as needed
+  ];
 
   return (
     <div className="container mx-auto mt-10">
@@ -62,6 +69,16 @@ const PackageDetails = () => {
               <div className="collapse-content">
                 <p className="text-gray-200">{packageDetails.dayTwoPlan}</p>
               </div>
+            </div>
+            <div className="my-8">
+              <h3 className="text-2xl font-bold mb-4 text-teal-500 text-center">
+                Booking Form
+              </h3>
+              {/* Use the BookingForm component */}
+              <BookingForm
+                packageDetails={packageDetails}
+                tourGuides={tourGuides}
+              />
             </div>
           </div>
         </>
