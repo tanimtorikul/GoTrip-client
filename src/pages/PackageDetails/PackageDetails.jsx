@@ -20,7 +20,6 @@ const PackageDetails = () => {
   const tourGuides = [
     { id: 1, name: "John Doe" },
     { id: 2, name: "Jane Smith" },
-    // Add more tour guides as needed
   ];
 
   return (
@@ -58,7 +57,16 @@ const PackageDetails = () => {
                 Day One Plan
               </div>
               <div className="collapse-content">
-                <p className="text-gray-200">{packageDetails.dayOnePlan}</p>
+                {packageDetails.dayOnePlan ? (
+                  <p className="text-gray-200">{packageDetails.dayOnePlan}</p>
+                ) : (
+                  <div>
+                    {" "}
+                    <p className="text-gray-200">
+                      No Plan For this package
+                    </p>{" "}
+                  </div>
+                )}
               </div>
             </div>
             <div className="collapse collapse-plus bg-teal-500 text-white">
@@ -67,14 +75,22 @@ const PackageDetails = () => {
                 Day Two Plan
               </div>
               <div className="collapse-content">
-                <p className="text-gray-200">{packageDetails.dayTwoPlan}</p>
+                {packageDetails.dayTwoPlan ? (
+                  <p className="text-gray-200">{packageDetails.dayTwoPlan}</p>
+                ) : (
+                  <div>
+                    {" "}
+                    <p className="text-gray-200">
+                      No Plan For this package
+                    </p>{" "}
+                  </div>
+                )}
               </div>
             </div>
-            <div className="my-8">
+            <div className="py-12">
               <h3 className="text-2xl font-bold mb-4 text-teal-500 text-center">
                 Booking Form
               </h3>
-              {/* Use the BookingForm component */}
               <BookingForm
                 packageDetails={packageDetails}
                 tourGuides={tourGuides}

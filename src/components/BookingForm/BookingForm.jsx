@@ -3,6 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-date-picker";
+import { useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -11,17 +15,16 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
+  const [value, onChange] = useState(new Date());
 
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
-
-    // uploading image to the imgbb
     const imageFile = { image: data.touristImage[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
@@ -29,26 +32,29 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
       },
     });
 
-
     if (res.data.success) {
-      console.log(data.packageName, user.email );
-      //  booking data
       const bookingData = {
         userEmail: user?.email,
         userDisplayName: user?.displayName,
-        packageName: data?.packageName,
+        packageName: packageDetails?.tripTitle,
         image: res.data.data.display_url,
-        price: data.price,
-        tourDate: data.tourDate,
+        price: packageDetails.price,
+        tourDate: value.toISOString().split("T")[0],
         tourGuide: data.tourGuide,
       };
 
-      console.log("Booking Data:", bookingData);
+      try {
+        const bookingResponse = await axiosSecure.post(
+          "/bookings",
+          bookingData
+        );
 
-      const bookingResponse = await axiosSecure.post("/bookings", bookingData);
-
-      if (bookingResponse.data.success) {
-        toast.success("Booking successful!");
+        if (bookingResponse.data.insertedId) {
+          toast.success(`${packageDetails.tripTitle} is booked successfully!`);
+          reset();
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
   };
@@ -56,7 +62,7 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-[1200px] mx-auto grid grid-cols-2 gap-12 p-6 bg-white shadow-lg rounded-lg"
+      className="max-w-[1200px] py-12 mx-auto grid grid-cols-2 gap-12 p-6 bg-white shadow-lg rounded-lg"
     >
       {/* Tourist Name */}
       <div className="mb-4">
@@ -154,11 +160,13 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
         >
           Tour Date
         </label>
-        <input
-          type="date"
+        <DatePicker
           name="tourDate"
+          selected={value}
+          onChange={onChange}
+          format="yyyy-MM-dd"
           className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-teal-500 transition duration-300"
-          {...register("tourDate", { required: "Tour Date is required" })}
+          value={value ? value.toISOString().split("T")[0] : ""}
         />
         {errors.tourDate && (
           <span className="text-red-500 text-sm">
