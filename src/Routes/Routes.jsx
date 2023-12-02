@@ -15,6 +15,7 @@ import ManageUsers from "../Layout/Dashboard/ManageUsers/ManageUsers";
 import AddPackages from "../Layout/Dashboard/AddPackages/AddPackages";
 import WishList from "../Layout/Dashboard/WishList/WishList";
 import Bookings from "../Layout/Dashboard/Bookings/Bookings";
+import AssignedTour from "../Layout/Dashboard/AssignedTour/AssignedTour";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
       {
         path: "bookings",
         element: <Bookings></Bookings>,
+      },
+      {
+        path: "assignedTour",
+        element: <AssignedTour></AssignedTour>,
       },
     ],
   },

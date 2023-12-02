@@ -1,18 +1,20 @@
 import { Toaster } from "react-hot-toast";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
+import useTourGuides from "../../hooks/useTourGuides";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
+  const [isTourGuides] = useTourGuides();
 
   return (
     <div className="flex flex-col md:flex-row md:h-screen text-white">
       <div className="w-full md:w-72 md:min-h-screen bg-blue-800 p-4">
         <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
-          {isAdmin ? "Admin Dashboard" : "User Dashboard"}
+          {isAdmin ? "Admin Dashboard" : isTourGuides ? "Tour Guide Dashboard" : "User Dashboard"}
         </div>
         <ul className="menu space-y-2">
-          {isAdmin ? (
+          {isAdmin && (
             <>
               <li>
                 <NavLink
@@ -42,7 +44,33 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
-          ) : (
+          )}
+
+          {isTourGuides && (
+            
+            <>
+             <li>
+                <NavLink
+                  to="/dashboard/profile"
+                  activeClassName="font-bold"
+                  className="hover:underline"
+                >
+                  My Profile
+                </NavLink>
+              </li>
+            <li>
+              <NavLink
+                to="/dashboard/assignedTour"
+                activeClassName="font-bold"
+                className="hover:underline"
+              >
+                Assigned Tour
+              </NavLink>
+            </li>
+            </>
+          )}
+
+          {!isAdmin && !isTourGuides && (
             <>
               <li>
                 <NavLink
@@ -73,6 +101,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
+
           {/* Shared navlinks */}
           <div className="divider my-2"></div>
           <li>

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -17,11 +17,9 @@ const Bookings = () => {
   });
 
   const handlePay = (bookingId) => {
-    // Implement logic to handle payment
   };
 
   const handleCancel = (bookingId) => {
-    // Implement logic to handle cancellation
   };
 
   return (

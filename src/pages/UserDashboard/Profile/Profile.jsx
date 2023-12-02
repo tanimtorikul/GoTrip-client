@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
+import useTourGuides from "../../../hooks/useTourGuides";
 import { useState, useEffect } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -12,6 +13,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Profile = () => {
   const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useAdmin();
+  const [isTourGuides] = useTourGuides();
   const [loading, setLoading] = useState(true);
 
   const {
@@ -66,12 +68,12 @@ const Profile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // or a loading spinner
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="p-6 border rounded-md shadow-md bg-white">
-      {/* User Profile Section */}
+      {/* User Profile */}
       <div className="mb-6 text-center">
         <img
           src={user?.photoURL}
@@ -84,8 +86,7 @@ const Profile = () => {
         <p className="text-gray-500">{user?.email}</p>
       </div>
 
-      {/* Conditional Rendering: Show Add Story Form only if not an admin */}
-      {!isAdmin ? (
+      {!isAdmin && !isTourGuides ? (
         <div>
           <div className="mb-8 text-center">
             <h1 className="text-3xl md:text-4xl text-gray-800 mb-2 font-bold">
@@ -162,11 +163,20 @@ const Profile = () => {
             </div>
           </form>
         </div>
+      ) : isAdmin ? (
+        // for Admins
+        <div>
+          <p className="text-center text-gray-800 font-semibold">
+            Welcome Admin {user?.displayName}!
+          </p>
+        </div>
       ) : (
-        // If isAdmin is true, show a message or other content for admin
-        <p className="text-center text-gray-800 font-semibold">
-          Welcome Admin
-        </p>
+        // for tour guide
+        <div>
+          <p className="text-center text-gray-800 font-semibold">
+            Welcome Tour Guide {user?.displayName}!
+          </p>
+        </div>
       )}
     </div>
   );
