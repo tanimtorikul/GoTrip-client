@@ -56,7 +56,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl">GoTrip</a>
+        <div className="lg:w-1/3 mb-6 lg:mb-0">
+          <Link
+            to="/"
+            className="flex justify-center space-x-3 lg:justify-start"
+          >
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-full bg-indigo-500">
+              <span className="text-3xl font-semibold">GT</span>
+            </div>
+            <span className="self-center text-2xl font-semibold">GoTrip</span>
+          </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -98,7 +108,7 @@ const Navbar = () => {
                   <a className="justify-between">{user.email}</a>
                 </li>
                 <li>
-                  <Link to='/dashboard/profile'>Dashboard</Link>
+                  <Link to="/dashboard/profile">Dashboard</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>
