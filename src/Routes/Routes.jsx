@@ -14,6 +14,7 @@ import PrivateRoute from "../Routes/PrivateRoute";
 import ManageUsers from "../Layout/Dashboard/ManageUsers/ManageUsers";
 import AddPackages from "../Layout/Dashboard/AddPackages/AddPackages";
 import WishList from "../Layout/Dashboard/WishList/WishList";
+import Bookings from "../Layout/Dashboard/Bookings/Bookings";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <WishList></WishList>,
+      },
+      {
+        path: "bookings",
+        element: <Bookings></Bookings>,
       },
     ],
   },

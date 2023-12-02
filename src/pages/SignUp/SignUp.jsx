@@ -17,13 +17,13 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-   
     createUser(data.email, data.password).then((result) => {
       console.log(data);
       const userInfo = {
         email: result.user?.email,
-        name: result.user?.name
+        name: result.user?.name,
       };
+      console.log(userInfo);
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
         toast.success("Logged in successfully!");

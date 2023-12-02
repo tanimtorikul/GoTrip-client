@@ -4,7 +4,6 @@ import { FaInfoCircle, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { Button } from "react-scroll";
 import toast from "react-hot-toast";
 
 const WishList = () => {
