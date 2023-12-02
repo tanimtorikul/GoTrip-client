@@ -1,8 +1,10 @@
 import { Toaster } from "react-hot-toast";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = false;
+  const [isAdmin] = useAdmin();
+  
 
   return (
     <div className="flex flex-col md:flex-row md:h-screen text-white">
