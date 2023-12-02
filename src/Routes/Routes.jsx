@@ -16,10 +16,12 @@ import AddPackages from "../Layout/Dashboard/AddPackages/AddPackages";
 import WishList from "../Layout/Dashboard/WishList/WishList";
 import Bookings from "../Layout/Dashboard/Bookings/Bookings";
 import AssignedTour from "../Layout/Dashboard/AssignedTour/AssignedTour";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -62,6 +64,7 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "profile",
