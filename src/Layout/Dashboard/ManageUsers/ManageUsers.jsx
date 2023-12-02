@@ -11,6 +11,7 @@ const ManageUsers = () => {
       return res.data;
     },
   });
+
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
       console.log(res.data);
@@ -20,7 +21,16 @@ const ManageUsers = () => {
       }
     });
   };
-  console.log(users);
+
+  const handleMakeTourGuide = (user) => {
+    axiosSecure.patch(`/users/tourguide/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        toast.success(`${user.name} is a tour guide now`);
+      }
+    });
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -49,11 +59,13 @@ const ManageUsers = () => {
                 <td className="py-2 px-4 border-b">#{index + 1}</td>
                 <td className="py-2 px-4 border-b">{user.name}</td>
                 <td className="py-2 px-4 border-b">{user.email}</td>
-                {user.role === "admin" ? (
-                  <td className="py-2 px-4 border-b">Admin</td>
-                ) : (
-                  <td className="py-2 px-4 border-b">Tourist</td>
-                )}
+                <td className="py-2 px-4 border-b">
+                  {user.role === "admin"
+                    ? "Admin"
+                    : user.role === "tourguide"
+                    ? "Tourguide"
+                    : "Tourist"}
+                </td>
                 <td className="py-2 px-4 border-b">
                   <div className="flex items-center justify-center space-x-4">
                     <button
@@ -69,12 +81,12 @@ const ManageUsers = () => {
                     </button>
                     <button
                       className={`bg-blue-500 text-white px-2 py-1 rounded ${
-                        user.role === "admin"
+                        user.role === "admin" || user.role === "tourguide"
                           ? "bg-gray-400 cursor-not-allowed"
                           : ""
                       }`}
                       onClick={() => handleMakeTourGuide(user)}
-                      disabled={user.role === "admin"}
+                      disabled={user.role === "tourguide"}
                     >
                       Make Tour Guide
                     </button>
