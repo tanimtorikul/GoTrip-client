@@ -4,20 +4,13 @@ import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  
 
   return (
     <div className="flex flex-col md:flex-row md:h-screen text-white">
       <div className="w-full md:w-72 md:min-h-screen bg-blue-800 p-4">
-        {isAdmin ? (
-          <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
-            Admin Dashboard
-          </div>
-        ) : (
-          <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
-            User Dashboard
-          </div>
-        )}
+        <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
+          {isAdmin ? "Admin Dashboard" : "User Dashboard"}
+        </div>
         <ul className="menu space-y-2">
           {isAdmin ? (
             <>
@@ -80,7 +73,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {/* shared navlinks */}
+          {/* Shared navlinks */}
           <div className="divider my-2"></div>
           <li>
             <NavLink to="/" className="text-gray-300 hover:text-white">
