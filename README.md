@@ -2,6 +2,10 @@
 
 Welcome to GoTrip, your go-to online platform for exploring and planning unforgettable trips to the beautiful destinations of Bangladesh. Whether you're an avid traveler or a first-time explorer, GoTrip is here to provide you with comprehensive information and resources to make your journey a memorable experience.
 
+## Live Link
+
+Visit [GoTrip](https://go-trip-web.web.app/) to explore the platform live!
+
 ## Features
 
 ### 1. Explore Popular Tourist Spots

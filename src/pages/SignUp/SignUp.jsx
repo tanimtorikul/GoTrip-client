@@ -26,7 +26,7 @@ const Signup = () => {
       console.log(userInfo);
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
-        toast.success("Logged in successfully!");
+        toast.success("User created successfully!");
         navigate(location?.state ? location.state : "/");
       });
     });
