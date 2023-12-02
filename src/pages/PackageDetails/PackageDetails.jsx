@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useaxiosPublic from "../../hooks/useAxiosPublic";
 import BookingForm from "../../components/BookingForm/BookingForm";
+import { Helmet } from "react-helmet-async";
 
 const PackageDetails = () => {
   const { id } = useParams();
@@ -24,6 +25,9 @@ const PackageDetails = () => {
 
   return (
     <div className="container mx-auto mt-10">
+      <Helmet>
+        <title>{`${packageDetails.tripTitle} - GoTrip - Travel Agency`}</title>
+      </Helmet>
       {packageDetails && (
         <>
           <h2 className="text-4xl font-bold text-center mb-8 text-teal-500">

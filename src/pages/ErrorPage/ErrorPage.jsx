@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 const ErrorPage = () => {
@@ -5,6 +6,9 @@ const ErrorPage = () => {
 
   return (
     <section className="bg-white">
+        <Helmet>
+        <title>404 Not Found | GoTrip - Travel Agency</title>
+      </Helmet>
       <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
         <div className="flex flex-col items-center max-w-sm mx-auto text-center">
           <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">

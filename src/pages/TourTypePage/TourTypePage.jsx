@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { axiosPublic } from "../../hooks/useaxiosPublic";
 import { FaRegHeart } from "react-icons/fa";
+import useaxiosPublic from "../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const TourTypePage = () => {
   const { tourType } = useParams();
   const [tours, setTours] = useState([]);
+  const axiosPublic = useaxiosPublic()
 
   useEffect(() => {
     const fetchTours = () => {
@@ -15,12 +17,15 @@ const TourTypePage = () => {
     };
 
     fetchTours();
-  }, [tourType]);
+  }, [tourType, axiosPublic]);
 
   console.log(tours);
 
   return (
     <div>
+      <Helmet>
+        <title>Tour Type | GoTrip - Travel Agency</title>
+      </Helmet>
       <div className="max-w-[1400px] mx-auto">
         <h1 className="text-4xl font-bold mb-6 text-center">
           {tourType} Tours

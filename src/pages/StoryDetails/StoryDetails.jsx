@@ -6,6 +6,7 @@ import { FaFacebook } from "react-icons/fa6";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const StoryDetails = () => {
   const location = useLocation();
@@ -40,6 +41,9 @@ const StoryDetails = () => {
 
   return (
     <div className="max-w-[1200px] mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
+     <Helmet>
+        <title>{`${story?.storyTitle} - GoTrip - Travel Agency`}</title>
+      </Helmet>
       {story && (
         <>
           <img

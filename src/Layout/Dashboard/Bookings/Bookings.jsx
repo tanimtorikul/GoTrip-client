@@ -1,7 +1,7 @@
-
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Bookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,22 +16,21 @@ const Bookings = () => {
     },
   });
 
-  const handlePay = (bookingId) => {
-  };
+  const handlePay = (bookingId) => {};
 
-  const handleCancel = (bookingId) => {
-  };
+  const handleCancel = (bookingId) => {};
 
   return (
     <div className="container mx-auto mt-8 p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-     <div className="flex justify-between">
-     <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
-        Your Bookings
-      </h1>
-      <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
-        Total Bookings {bookings.length}
-      </h1>
-     </div>
+      
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
+          Your Bookings
+        </h1>
+        <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
+          Total Bookings {bookings.length}
+        </h1>
+      </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">

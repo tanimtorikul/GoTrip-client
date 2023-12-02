@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
 import useTourGuides from "../../../hooks/useTourGuides";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -73,6 +74,9 @@ const Profile = () => {
 
   return (
     <div className="p-6 border rounded-md shadow-md bg-white">
+      <Helmet>
+        <title>Profile | GoTrip - Travel Agency</title>
+      </Helmet>
       {/* User Profile */}
       <div className="mb-6 text-center">
         <img

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import SectionTitle from "../../components/shared/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllStories = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,6 +19,9 @@ const AllStories = () => {
 
   return (
     <div className="max-w-[1400px] mx-auto py-8">
+      <Helmet>
+        <title>All Stories | GoTrip - Travel Agency</title>
+      </Helmet>
       <SectionTitle
         heading="Travel Diaries Unfold"
         subHeading="Capturing Moments, Sharing Adventures on the Road"

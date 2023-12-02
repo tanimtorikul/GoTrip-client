@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useaxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AllPackages = () => {
   const [packages] = usePackages();
@@ -59,6 +60,9 @@ const AllPackages = () => {
 
   return (
     <div className="max-w-[1400px] mx-auto">
+      <Helmet>
+        <title>All Packages | GoTrip - Travel Agency</title>
+      </Helmet>
       {packages.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-8">
           {packages.map((tourPackage) => (
