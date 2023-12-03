@@ -104,7 +104,7 @@ const TourismSection = () => {
             )}
             <Link
               to="/allpackages"
-              className="mt-4 bg-black text-white py-2 px-4 rounded-md"
+              className="mt-4 bg-teal-500 text-white py-2 px-4 rounded-md"
             >
               All Packages
             </Link>

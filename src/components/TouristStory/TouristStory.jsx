@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../shared/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -48,7 +48,7 @@ const TouristStory = () => {
       <div className="flex justify-center">
         <Link
           to="/allstories"
-          className="mt-4 bg-black text-white py-2 px-4 rounded-md"
+          className="mt-4 bg-teal-500 text-white py-2 px-4 rounded-md"
         >
           All Stories
         </Link>

@@ -33,11 +33,8 @@ const StoryDetails = () => {
     }, 500);
   };
 
-  const baseUrl = window.location.origin;
-  const path = location.pathname.startsWith("/")
-    ? location.pathname
-    : `/${location.pathname}`;
-  const shareUrl = `${baseUrl}${path}`;
+  const shareUrl = "https://go-trip-web.web.app/";
+
 
   return (
     <div className="max-w-[1200px] mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">

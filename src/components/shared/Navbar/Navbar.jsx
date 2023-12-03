@@ -61,7 +61,7 @@ const Navbar = () => {
             to="/"
             className="flex justify-center space-x-3 lg:justify-start"
           >
-            <div className="flex items-center justify-center w-12 h-12 text-white rounded-full bg-indigo-500">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-full bg-teal-500">
               <span className="text-3xl font-semibold">GT</span>
             </div>
             <span className="self-center text-2xl font-semibold">GoTrip</span>
@@ -118,7 +118,7 @@ const Navbar = () => {
               </ul>
             </>
           ) : (
-            <Link to="/login" className="btn text-lg bg-[#3554D1] text-white">
+            <Link to="/login" className="btn text-lg bg-teal-500 text-white">
               Login
             </Link>
           )}

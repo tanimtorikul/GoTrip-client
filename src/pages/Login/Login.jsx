@@ -19,9 +19,9 @@ const Login = () => {
     console.log(data);
     signIn(data.email, data.password).then((result) => {
       const user = result.user;
-      navigate("/");
 
       toast.success("Logged in successfully!");
+      navigate(location?.state ? location.state : "/");
       console.log(user);
     });
   };
@@ -92,7 +92,7 @@ const Login = () => {
               type="submit"
               className="bg-[#3554D1] w-full rounded-md py-4 text-white md:text-lg"
             >
-              Sign Up
+              Login
             </button>
           </div>
         </form>
@@ -108,7 +108,7 @@ const Login = () => {
             to="/signup"
             className="hover:underline hover:text-indigo-600 text-gray-600"
           >
-            Sign up
+            Sign Up
           </Link>
           .
         </p>

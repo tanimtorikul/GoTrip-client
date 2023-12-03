@@ -7,7 +7,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin.jsx";
 import useaxiosPublic from "../../hooks/useAxiosPublic.jsx";
 
 const Signup = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const axiosPublic = useaxiosPublic();
   const navigate = useNavigate();
   const {
@@ -18,17 +18,23 @@ const Signup = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
-      console.log(data);
-      const userInfo = {
-        email: result.user?.email,
-        name: result.user?.name,
-      };
-      console.log(userInfo);
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        toast.success("User created successfully!");
-        navigate(location?.state ? location.state : "/");
-      });
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
+              toast.success("User Created Successfully!");
+              navigate("/");
+            }
+          });
+        })
+        .catch((error) => console.log(error));
     });
   };
 

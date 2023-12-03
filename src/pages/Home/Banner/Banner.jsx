@@ -56,7 +56,7 @@ const Banner = () => {
               <p className="text-2xl mb-6">Where Would You Like To Go?</p>
               <Link
                 to="/allpackages"
-                className="bg-black text-white py-2 px-4 rounded"
+                className="bg-teal-500 text-white py-2 px-4 rounded"
               >
                 Book Now
               </Link>
