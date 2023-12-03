@@ -16,8 +16,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-gray-100 bg-opacity-30">
-      <div className="navbar-start">
+    <div className="navbar bg-white fixed z-10 w-full lg:px-24">
+      <div className="navbar-start ">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
