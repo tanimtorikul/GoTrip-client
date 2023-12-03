@@ -7,6 +7,7 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import DatePicker from "react-date-picker";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -16,6 +17,7 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const [value, onChange] = useState(new Date());
+  const navigate = useNavigate();
 
   const {
     register,
@@ -25,6 +27,14 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    // check if the user is logged in
+    if (!user?.email || !user?.displayName) {
+      toast.error("Login first to book");
+      navigate("/login");
+      return;
+    }
+
+    // Continue with booking logic for logged-in users
     const imageFile = { image: data.touristImage[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
@@ -112,8 +122,15 @@ const BookingForm = ({ packageDetails, tourGuides }) => {
           type="file"
           name="touristImage"
           className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-teal-500 transition duration-300"
-          {...register("touristImage")}
+          {...register("touristImage", {
+            required: "Tourist Image is required",
+          })}
         />
+        {errors.touristImage && (
+          <span className="text-red-500 text-sm">
+            {errors.touristImage.message}
+          </span>
+        )}
       </div>
 
       {/* Package Name */}
