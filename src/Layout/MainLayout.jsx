@@ -10,7 +10,7 @@ const MainLayout = () => {
         <Navbar></Navbar>
       </div>
 
-      <div className="min-h-screen">
+      <div className="min-h-screen py-12 md:py-24">
         <Outlet></Outlet>
       </div>
 

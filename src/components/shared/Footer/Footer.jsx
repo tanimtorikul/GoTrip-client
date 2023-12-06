@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white px-4 sm:px-8 py-12">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+    <footer className="bg-gray-800 text-white px-4 sm:px-8 py-6 md:py-12">
+      <div className="container mx-auto flex flex-col lg:flex-row md:justify-between md:items-center">
         <div className="lg:w-1/3 mb-6 lg:mb-0">
           <Link
             to="/"
-            className="flex justify-center space-x-3 lg:justify-start"
+            className="flex md:justify-center space-x-3 lg:justify-start"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500">
               <span className="text-3xl font-semibold">GT</span>
@@ -84,7 +84,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-6 text-sm text-center">
+      <div className="pt-12 text-sm text-center">
         © 2023 GoTrip. Developed by Tanim.
       </div>
     </footer>
