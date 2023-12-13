@@ -10,15 +10,15 @@ const MainLayout = () => {
         <Navbar></Navbar>
       </div>
 
-     <div className="px-4 md:px-4 lg:px-0">
-     <div className="min-h-screen py-12 md:py-24 ">
-        <Outlet></Outlet>
-      </div>
+      <div className="px-4 md:px-4 lg:px-0">
+        <div className="min-h-screen py-12 md:py-24 ">
+          <Outlet></Outlet>
+        </div>
 
-      <div>
-        <Footer></Footer>
+        <div>
+          <Footer></Footer>
+        </div>
       </div>
-     </div>
       <Toaster />
     </div>
   );
