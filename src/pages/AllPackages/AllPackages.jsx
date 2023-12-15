@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import usePackages from "../../hooks/usePackages";
 import { FaRegHeart } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -13,11 +13,16 @@ const AllPackages = () => {
   const [wishlist, setWishlist] = useState([]);
   const axiosPublic = useaxiosPublic();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleWishlistToggle = async (tourPackageItem) => {
     const isPackageInWishlist = wishlist.some(
       (item) => item._id === tourPackageItem._id
     );
+    if (!user) {
+      navigate("/login");
+      return;
+    }
 
     const result = await Swal.fire({
       title: "Add to Wishlist?",
@@ -57,6 +62,9 @@ const AllPackages = () => {
       }
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="max-w-[1400px] mx-auto">

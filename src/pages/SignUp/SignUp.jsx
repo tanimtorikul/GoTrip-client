@@ -45,7 +45,7 @@ const Signup = () => {
       </Helmet>
       <div className="flex flex-col md:max-w-2xl rounded-md px-10 py-2 bg-white shadow-xl text-gray-900">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-2xl md:text-5xl font-bold">Sign Up</h1>
+          <h1 className="my-3 text-2xl md:text-4xl font-bold">Sign Up</h1>
           <p className="md:text-lg text-gray-400">
             Create an account to get started
           </p>

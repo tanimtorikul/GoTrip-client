@@ -16,6 +16,7 @@ const PackageDetails = () => {
       try {
         const response = await axiosPublic.get(`/packages/${id}`);
         setPackageDetails(response.data);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.error("Error fetching package details:", error);
       }
@@ -30,7 +31,7 @@ const PackageDetails = () => {
   ];
 
   return (
-    <div className="container mx-auto mt-6">
+    <div className="container mx-auto mt-12 md:mt-0">
       <Helmet>
         <title>{`${
           packageDetails.tripTitle || "Package"
@@ -64,15 +65,15 @@ const PackageDetails = () => {
             </Carousel>
           )}
 
-          <div className="mt-8 text-center shadow-lg bg-gray-100 p-10">
+          <div className="mt-8 text-center shadow-lg bg-gray-100 p-10 md:w-1/2 mx-auto">
             <h3 className="text-2xl font-bold mb-4 text-teal-500">
-              About The Tour
+              Overview
             </h3>
             <p className="text-gray-700">{packageDetails.description}</p>
           </div>
 
-          <div className="mt-8 space-y-4">
-            <div className="collapse collapse-plus bg-teal-500 text-white">
+<div className="space-y-4 py-6 md:w-1/2 mx-auto">
+<div className="collapse collapse-plus bg-teal-500 text-white">
               <input type="checkbox" id="dayOne" />
               <div className="collapse-title text-2xl font-bold">
                 Day One Plan
@@ -99,6 +100,9 @@ const PackageDetails = () => {
                 )}
               </div>
             </div>
+</div>
+          <div className="mt-8 space-y-4">
+           
 
             <div className="py-12">
               <h3 className="text-2xl font-bold mb-4 text-teal-500 text-center">

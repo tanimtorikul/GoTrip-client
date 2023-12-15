@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const StoryDetails = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { id } = useParams();
@@ -20,6 +19,7 @@ const StoryDetails = () => {
     const fetchData = async () => {
       const response = await axiosPublic.get(`/stories/${id}`);
       setStory(response.data);
+      window.scrollTo(0, 0);
     };
 
     fetchData();

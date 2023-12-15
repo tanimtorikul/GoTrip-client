@@ -13,6 +13,7 @@ const TourTypePage = () => {
     const fetchTours = () => {
       axiosPublic(`/packages/tourType/${tourType}`).then((response) => {
         setTours(response.data);
+        window.scrollTo(0, 0);
       });
     };
 

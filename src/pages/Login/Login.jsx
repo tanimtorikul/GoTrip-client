@@ -26,11 +26,21 @@ const Login = () => {
     });
   };
   return (
-    <div className="bg-[#E5F0FD] flex justify-center items-center py-4 md:py-0 min-h-screen">
+    <div className="bg-[#E5F0FD] flex flex-col justify-center items-center py-4 md:py-0 min-h-screen">
       <Helmet>
         <title>Login | GoTrip -Travel Agency</title>
       </Helmet>
+      <div className="mb-4 text-center bg-base-100 p-4">
+      <p className="text-gray-600">
+        Use the following credentials to log in as a admin:
+      </p>
+      <div className="mt-2">
+        <p className="font-semibold">Email: admin@admin.com</p>
+        <p className="font-semibold">Password: T@nim017718</p>
+      </div>
+    </div>
       <div className="flex flex-col md:max-w-2xl rounded-md py-2 px-10 bg-white shadow-xl text-gray-900">
+     
         <div className="mb-2 text-center">
           <h1 className="my-2 text-2xl md:text-5xl font-bold">Log In</h1>
           <p className="md:text-lg text-gray-400">

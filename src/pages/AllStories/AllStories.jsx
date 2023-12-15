@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import SectionTitle from "../../components/shared/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const AllStories = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,6 +17,10 @@ const AllStories = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); 
 
   return (
     <div className="max-w-[1400px] mx-auto py-8">

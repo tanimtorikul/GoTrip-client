@@ -31,20 +31,22 @@ const TourismSection = () => {
           onSelect={(index) => setTabIndex(index)}
           className="my-8"
         >
-          <TabList className="flex justify-center space-x-4">
-            <Tab className="md:text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
-              Overview
-            </Tab>
-            <Tab className="md:text-xl font-semibold  border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
-              Our Packages
-            </Tab>
-            <Tab className="md:text-xl font-semibold border-b-2 border-transparent  focus:outline-none focus:border-blue-500 cursor-pointer">
-              Meet Our Tour Guides
-            </Tab>
+          <TabList className="flex justify-center space-x-4 py-2 rounded-md">
+            {["Overview", "Our Packages", "Meet Our Tour Guides"].map(
+              (tab, index) => (
+                <Tab
+                  key={index}
+                  className={`md:text-xl font-semibold border-b-2 border-transparent focus:outline-none focus:bg-slate-400 focus:px-2 focus:text-white cursor-pointer ${
+                    tabIndex === index ? "text-white" : ""
+                  }`}
+                >
+                  {tab}
+                </Tab>
+              )
+            )}
           </TabList>
 
           <TabPanel>
-            {/* Map over the YouTube video URLs and generate iframes */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
               {videoUrl.map((videoURL, index) => (
                 <div
