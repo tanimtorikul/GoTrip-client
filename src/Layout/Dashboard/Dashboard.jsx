@@ -2,16 +2,37 @@ import { Toaster } from "react-hot-toast";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 import useTourGuides from "../../hooks/useTourGuides";
+import { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
-  const [isTourGuides] = useTourGuides();
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isTourGuides, isTourGuidesLoading] = useTourGuides();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (
+      (isAdmin && !isAdminLoading) ||
+      (isTourGuides && !isTourGuidesLoading)
+    ) {
+      setLoading(false);
+    }
+  }, [isAdmin, isAdminLoading, isTourGuides, isTourGuidesLoading]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex flex-col md:flex-row md:h-screen text-white">
       <div className="w-full md:w-72 md:min-h-screen bg-blue-800 p-4">
         <div className="flex justify-center text-3xl text-center space-x-4 mb-6">
-          {isAdmin ? "Admin Dashboard" : isTourGuides ? "Tour Guide Dashboard" : "User Dashboard"}
+          {isAdmin
+            ? "Admin Dashboard"
+            : isTourGuides
+            ? "Tour Guide Dashboard"
+            : "User Dashboard"}
         </div>
         <ul className="menu space-y-2">
           {isAdmin && (
@@ -47,9 +68,8 @@ const Dashboard = () => {
           )}
 
           {isTourGuides && (
-            
             <>
-             <li>
+              <li>
                 <NavLink
                   to="/dashboard/profile"
                   activeClassName="font-bold"
@@ -58,15 +78,15 @@ const Dashboard = () => {
                   My Profile
                 </NavLink>
               </li>
-            <li>
-              <NavLink
-                to="/dashboard/assignedTour"
-                activeClassName="font-bold"
-                className="hover:underline"
-              >
-                Assigned Tour
-              </NavLink>
-            </li>
+              <li>
+                <NavLink
+                  to="/dashboard/assignedTour"
+                  activeClassName="font-bold"
+                  className="hover:underline"
+                >
+                  Assigned Tour
+                </NavLink>
+              </li>
             </>
           )}
 
