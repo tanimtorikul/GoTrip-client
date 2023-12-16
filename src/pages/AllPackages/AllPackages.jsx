@@ -7,9 +7,10 @@ import useaxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../components/Loading";
 
 const AllPackages = () => {
-  const [packages] = usePackages();
+  const [packages, loading] = usePackages();
   const [wishlist, setWishlist] = useState([]);
   const axiosPublic = useaxiosPublic();
   const { user } = useAuth();
@@ -64,14 +65,16 @@ const AllPackages = () => {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [packages]);
 
   return (
     <div className="max-w-[1400px] mx-auto">
       <Helmet>
         <title>All Packages | GoTrip - Travel Agency</title>
       </Helmet>
-      {packages.length > 0 ? (
+      {loading ? (
+        <Loading />
+      ) : packages.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-8">
           {packages.map((tourPackage) => (
             <div

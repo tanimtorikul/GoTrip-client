@@ -7,6 +7,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../components/Loading";
 
 const StoryDetails = () => {
   const navigate = useNavigate();
@@ -14,11 +15,13 @@ const StoryDetails = () => {
   const { id } = useParams();
   const [story, setStory] = useState(null);
   const axiosPublic = useAxiosPublic();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axiosPublic.get(`/stories/${id}`);
       setStory(response.data);
+      setLoading(false)
       window.scrollTo(0, 0);
     };
 
@@ -41,7 +44,9 @@ const StoryDetails = () => {
      <Helmet>
         <title>{`${story?.storyTitle} - GoTrip - Travel Agency`}</title>
       </Helmet>
-      {story && (
+      {loading ? (
+        <Loading/>
+      ) : story && (
         <>
           <img
             src={story.image}
