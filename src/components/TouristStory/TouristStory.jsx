@@ -31,7 +31,7 @@ const TouristStory = () => {
             className="group relative overflow-hidden rounded-md transition-transform transform hover:scale-105"
           >
             <img
-              className="h-72 w-full object-cover"
+              className="h-72 w-full object-cover" data-aos="fade-up" data-aos-duration="1500"
               src={story.image}
               alt=""
             />

@@ -82,6 +82,8 @@ const AllPackages = () => {
                 <img
                   src={tourPackage.images[0]}
                   className="w-full h-72 object-cover group-hover:scale-110 transition-transform"
+                  data-aos="flip-right"
+                  data-aos-duration="1500"
                 />
                 <div className="absolute top-6 right-5">
                   <FaRegHeart

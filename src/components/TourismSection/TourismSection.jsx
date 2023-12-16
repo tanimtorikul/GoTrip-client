@@ -66,16 +66,16 @@ const TourismSection = () => {
           </TabPanel>
           <TabPanel>
             {packages.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8 px-4 md:px-4 lg:px-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8 px-4 md:px-4 lg:px-0" >
                 {packages.slice(0, 4).map((tourPackage) => (
                   <div
                     key={tourPackage._id}
-                    className="card group w-full  bg-white shadow-lg rounded-md overflow-hidden"
+                    className="card group w-full  bg-white shadow-lg rounded-md overflow-hidden" 
                   >
                     <figure className="relative">
                       <img
                         src={tourPackage.images[0]}
-                        className="w-full h-72 object-cover group-hover:scale-110 transition-transform"
+                        className="w-full h-72 object-cover group-hover:scale-110 transition-transform" data-aos="flip-left" data-aos-duration="1500"
                       />
                       <div className="absolute top-6 right-5">
                         <FaRegHeart className="text-black text-4xl transition-transform transform hover:scale-110 bg-gray-200 rounded-full p-2" />
