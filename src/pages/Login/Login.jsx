@@ -9,6 +9,7 @@ const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
+
   const {
     register,
     handleSubmit,
@@ -23,6 +24,11 @@ const Login = () => {
       toast.success("Logged in successfully!");
       navigate(location?.state ? location.state : "/");
       console.log(user);
+    })
+    .catch((error) => {
+      console.error(error);
+      toast.error("Invalid email or password. Please try again.");
+
     });
   };
   return (

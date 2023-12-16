@@ -12,13 +12,10 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (
-      (isAdmin && !isAdminLoading) ||
-      (isTourGuides && !isTourGuidesLoading)
-    ) {
+    if (!isAdminLoading && !isTourGuidesLoading) {
       setLoading(false);
     }
-  }, [isAdmin, isAdminLoading, isTourGuides, isTourGuidesLoading]);
+  }, [isAdminLoading, isTourGuidesLoading]);
 
   if (loading) {
     return <Loading />;
